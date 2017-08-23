@@ -1,0 +1,50 @@
+#include<stdio.h>
+#include<stdlib.h>
+#include"addstu1.h"
+#include"teacherwindow.h"
+void addstu()
+{
+	typedef struct student
+	{
+		char id[24];
+		char mima[24];
+		char name[24];
+		char banji[24];
+		char sex[24];
+		int chinese;
+		int math;
+		int english;
+		int zhengzhi;
+	}Stu;
+	FILE * fp=fopen("a.txt","a");
+    if(fp==NULL)
+	{
+		printf("打开文件失败!\n");
+		exit(0);
+	}
+	Stu s={};
+	    printf("学生学号:\n");
+    	scanf("%s\n",s.id);
+		printf("学生密码:\n");
+		scanf("%s\n",s.mima);
+		printf("学生姓名:\n");
+		scanf("%s\n",s.name);
+		printf("学生班级:\n");
+		scanf("%s\n",s.banji);
+		printf("学生性别:\n");
+		scanf("%s\n",s.sex);
+		printf("语文成绩:\n");
+		scanf("%d\n",&s.chinese);
+		printf("数学成绩:\n");
+		scanf("%d\n",&s.math);
+		printf("英语成绩:\n");
+		scanf("%d\n",&s.english);
+		printf("政治成绩:\n");
+		scanf("%d\n",&s.zhengzhi);
+		fwrite(&s,sizeof(Stu),1,fp);
+    	fclose(fp);
+		fp=NULL;
+		teacher();
+
+	
+}
